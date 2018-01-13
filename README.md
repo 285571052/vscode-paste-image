@@ -2,15 +2,11 @@
 
 Paste image directly from clipboard to markdown/asciidoc(or other file)!
 
-**Support Mac/Windows/Linux!** And support config destination folder.
-
-![paste-image](https://raw.githubusercontent.com/mushanshitiancai/vscode-paste-image/master/res/vscode-paste-image.gif)
-
 ## Usage
 
 1. capture screen to clipboard
 2. Open the command palette: `Ctrl+Shift+P` (`Cmd+Shift+P` on Mac)
-3. Type: "Paste Image" or you can use default keyboard binding: `Ctrl+Alt+V` (`Cmd+Alt+V` on Mac).
+3. Type: "Paste Image" or you can use default keyboard binding: `Ctrl+Shift+V` (`Cmd+Shift+V` on Mac).
 4. Image will be saved in the folder that contains current editing file
 5. The relative path will be paste to current editing file 
 
@@ -93,48 +89,3 @@ When you editing a markdown, it will pasted as markdown image link format `![](i
 When you editing a asciidoc, it will pasted as asciidoc image link format `image::imagePath[]`.
 
 In other file, it just paste the image's path.
-
-## Contact
-
-If you have some any question or advice, Welcome to [issue](https://github.com/mushanshitiancai/vscode-paste-image/issues)
-
-## TODO
-
-- [x] support win (by @kivle)
-- [x] support linux
-- [x] support use the selected text as the image name
-- [x] support config (@ysknkd in #4)
-- [x] support config relative/absolute path (@ysknkd in #4)
-- [x] support asciidoc
-- [x] supoort use variable ${projectRoot} and ${currentFileDir} in config
-- [x] support config basePath
-- [x] support config forceUnixStyleSeparator
-- [x] support config prefix
-- [x] support config suffix
-- [x] supoort use variable ${currentFileName} and ${currentFileNameWithoutExt} in config
-- [x] support check if the dest directory is a file
-- [x] support select text as a sub path with multi new directory like `a/b/c/d/imageName` or `../a/b/c/d/imageName`
-- [ ] support config default image name pattern
-
-## License
-
-The extension and source are licensed under the [MIT license](LICENSE.txt).
-
-## Donate
-
-If you like this plugin, you can donate to me to support me develop it better, thank you!
-
-PayPal:
-
-<a href="https://www.paypal.me/mushanshitiancai"><img src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"></img></a>
-
-支付宝:
-
-![alipay](https://raw.githubusercontent.com/mushanshitiancai/vscode-paste-image/master/res/alipay.png)
-
-微信支付:
-
-![weixin](https://raw.githubusercontent.com/mushanshitiancai/vscode-paste-image/master/res/weixin.png)
-
-Donator list：
-- 白色咖啡
