@@ -6,6 +6,7 @@ import * as fse from 'fs-extra';
 import { spawn } from 'child_process';
 import * as moment from 'moment';
 import * as upath from 'upath';
+var pinyin = require('pinyin');
 
 class Logger {
     static channel: vscode.OutputChannel;
@@ -53,6 +54,7 @@ class Paster {
     static PATH_VARIABLE_PROJECT_ROOT = /\$\{projectRoot\}/;
     static PATH_VARIABLE_CURRNET_FILE_NAME = /\$\{currentFileName\}/;
     static PATH_VARIABLE_CURRNET_FILE_NAME_WITHOUT_EXT = /\$\{currentFileNameWithoutExt\}/;
+    static PATH_VARIABLE_CURRNET_FILE_NAME_WITHOUT_EXT_AND_SPACE = /\$\{currentFileNameWithoutExtAndSpace\}/;
 
     static folderPathFromConfig: string;
     static basePathFromConfig: string;
@@ -320,11 +322,17 @@ class Paster {
         let ext = path.extname(curFilePath);
         let fileName = path.basename(curFilePath);
         let fileNameWithoutExt = path.basename(curFilePath, ext);
+        let fileNameWithoutExtAndSpace = fileNameWithoutExt.replace(/\s/g, "");
 
+        fileNameWithoutExtAndSpace = pinyin(fileNameWithoutExtAndSpace, { style: pinyin.STYLE_NORMAL });		
+		fileNameWithoutExtAndSpace = String(fileNameWithoutExtAndSpace).replace(/,/g, "");
+		
         pathStr = pathStr.replace(this.PATH_VARIABLE_PROJECT_ROOT, projectRoot);
         pathStr = pathStr.replace(this.PATH_VARIABLE_CURRNET_FILE_DIR, currentFileDir);
         pathStr = pathStr.replace(this.PATH_VARIABLE_CURRNET_FILE_NAME, fileName);
         pathStr = pathStr.replace(this.PATH_VARIABLE_CURRNET_FILE_NAME_WITHOUT_EXT, fileNameWithoutExt);
+
+        pathStr = pathStr.replace(this.PATH_VARIABLE_CURRNET_FILE_NAME_WITHOUT_EXT_AND_SPACE, fileNameWithoutExtAndSpace);
         return pathStr;
     }
 }
